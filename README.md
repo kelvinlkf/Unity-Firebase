@@ -16,4 +16,6 @@ https://firebase.google.com/docs/unity/setup?gclid=CjwKCAjwqLblBRBYEiwAV3pCJu4Z2
 - Replace the database link in GoogleFirebase.cs/InitDatabase/Firebase.FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://FIREBASE-PROJECT.firebaseio.com/")
   (Replace FIREBASE-PROJECT with your respective firebase project
 - For testing environment, it's better to set the rules to public instead of private. But make sure you change it back to private when you are launching your app into public
+- Unity 5.x and earlier use the .NET 3.x framework, so import dotnet3/FirebaseAnalytics.unitypackage.
+- Unity 2017.x and later allow the use of the .NET 4.x framework. If your Unity project uses .NET 4.x, import dotnet4/FirebaseAnalytics.unitypackage.
 
