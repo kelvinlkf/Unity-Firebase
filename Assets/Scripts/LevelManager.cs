@@ -73,6 +73,7 @@ public class LevelManager : Framework.Singleton<LevelManager> {
         field_phone = GameObject.Find("UI_Profile_Phone").GetComponent<InputField>();
         field_level = GameObject.Find("UI_Profile_Level").GetComponent<InputField>();
         field_position = GameObject.Find("UI_Profile_Position").GetComponent<InputField>();
+        txt_error = GameObject.Find("UI_Txt_Error").GetComponent<Text>();
 
         //Button
         Button btn_update = GameObject.Find("UI_BTN_Update").GetComponent<Button>();
@@ -101,6 +102,7 @@ public class LevelManager : Framework.Singleton<LevelManager> {
     IEnumerator LoadLevel()
     {
         string level = "";
+
         switch(GoogleFirebase.Instance.GetScene())
         {
             case Scene.Login:

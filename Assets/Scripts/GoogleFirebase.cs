@@ -71,13 +71,14 @@ public class GoogleFirebase : Framework.Singleton<GoogleFirebase> {
 
                 if (login)
                 {
+                    scene = Scene.Profile;
+
                     FirebaseData.Instance.SetUser(user);
                     LevelManager.Instance.LoadProfile();
-
-                    scene = Scene.Profile;
                 }
                 break;
             case Scene.Profile:
+                LevelManager.Instance.GetErrorText().text = error;
                 break;
         }
         
@@ -257,7 +258,24 @@ public class GoogleFirebase : Framework.Singleton<GoogleFirebase> {
         Dictionary<string, System.Object> childUpdates = new Dictionary<string, System.Object>();
         childUpdates["/users/" + uid] = entryValues;
 
-        referrence.UpdateChildrenAsync(childUpdates);
+        referrence.UpdateChildrenAsync(childUpdates).ContinueWith(task =>
+        {
+            if(task.IsCanceled)
+            {
+
+            }
+
+            if(task.IsFaulted)
+            {
+                GetErrorMessage(task);
+                return;
+            }
+
+            if(task.IsCompleted)
+            {
+                Debug.Log("Update Succcessfully");
+            }
+        });
     }
 
     public void UpdateUser()
