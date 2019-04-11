@@ -24,8 +24,7 @@ public class GoogleFirebase : Framework.Singleton<GoogleFirebase> {
     private Scene scene;
     private string error;
 
-    //Result
-
+    //Check dependancy before launching other firebase services
     private void Init()
     {
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
@@ -175,26 +174,6 @@ public class GoogleFirebase : Framework.Singleton<GoogleFirebase> {
         });
     }
 
-    private void GetErrorMessage(System.Threading.Tasks.Task task)
-    {
-        foreach (System.Exception exception in task.Exception.Flatten().InnerExceptions)
-        {
-            string authErrorCode = "";
-            Firebase.FirebaseException firebaseEx = exception as Firebase.FirebaseException;
-            if (firebaseEx != null)
-            {
-                authErrorCode = System.String.Format("AuthError.{0}: ",
-                  ((Firebase.Auth.AuthError)firebaseEx.ErrorCode).ToString());
-            }
-            //Debug.Log("number- " + authErrorCode + "the exception is- " + exception.ToString());
-
-            string[] code = exception.ToString().Split(':'); //((Firebase.Auth.AuthError)firebaseEx.ErrorCode).ToString();
-            Debug.Log(code[1]);
-            error = code[1];
-        }
-
-    }
-
     //Database
     private void InitDatabase()
     {
@@ -304,5 +283,26 @@ public class GoogleFirebase : Framework.Singleton<GoogleFirebase> {
             return;
         }
         // Do something with the data in args.Snapshot
+    }
+
+    //Error
+    private void GetErrorMessage(System.Threading.Tasks.Task task)
+    {
+        foreach (System.Exception exception in task.Exception.Flatten().InnerExceptions)
+        {
+            string authErrorCode = "";
+            Firebase.FirebaseException firebaseEx = exception as Firebase.FirebaseException;
+            if (firebaseEx != null)
+            {
+                authErrorCode = System.String.Format("AuthError.{0}: ",
+                  ((Firebase.Auth.AuthError)firebaseEx.ErrorCode).ToString());
+            }
+            //Debug.Log("number- " + authErrorCode + "the exception is- " + exception.ToString());
+
+            string[] code = exception.ToString().Split(':'); //((Firebase.Auth.AuthError)firebaseEx.ErrorCode).ToString();
+            Debug.Log(code[1]);
+            error = code[1];
+        }
+
     }
 }
