@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "621787359510",
+    "firebase_url": "https://unity-firebase-c505b.firebaseio.com",
+    "project_id": "unity-firebase-c505b",
+    "storage_bucket": "unity-firebase-c505b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621787359510:android:49a25c55df1f78c9",
+        "android_client_info": {
+          "package_name": "com.Engame.Firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGi-qN7jIVRagnV8gAbaiAWbwADprdBgw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "621787359510-vmgp8s1hceqipbqcnst2n8pmcevm945p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
